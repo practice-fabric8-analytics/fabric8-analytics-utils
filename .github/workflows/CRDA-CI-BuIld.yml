@@ -40,10 +40,9 @@ jobs:
           virtualenv -p python3 venv && source venv/bin/activate;
           ls;
           pip install -r tests/requirements.txt;
-      - name: Run Tests
-        run: pytest --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv tests/
-      - name: Run codecov
-        run: codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1
+          pytest --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv tests/;
+          codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1;
+      
           
           
           
