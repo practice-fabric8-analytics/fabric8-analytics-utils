@@ -31,12 +31,14 @@ jobs:
         with:
          python-version: 3.6
       # Runs a set of commands using the runners shell
-      - name: Run Test's 
+      - name: Setup tests 
         run: |
           pip install -U pip;
           pip install -r tests/requirements.txt;
-          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/;
-          codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1;
+      - name: Run Tests
+        run: python "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/
+      - name: Run codecov
+        run: codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1
           
           
           
