@@ -33,26 +33,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run Test's 
         run: |
-          SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )";
-          pushd "${SCRIPT_DIR}/.." > /dev/null;
-          set -e;
-          set -x;
-          COVERAGE_THRESHOLD=95;
-          export TERM=xterm;
-          RED=$(tput bold && tput setaf 1);
-          GREEN=$(tput bold && tput setaf 2);
-          YELLOW=$(tput bold && tput setaf 3);
-          NORMAL=$(tput sgr0);
-          echo "Create Virtualenv for Python deps ...";
           pip install -U pip;
-          pip install virtualenv;
-          virtualenv --version;
-          virtualenv -p python3 venv && source venv/bin/activate;
           pip install -r tests/requirements.txt;
-          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/;
+          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/;
           codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1;
-          printf "%stests passed%s\n\n" "${GREEN}" "${NORMAL}";
-          popd > /dev/null;
           
           
           
