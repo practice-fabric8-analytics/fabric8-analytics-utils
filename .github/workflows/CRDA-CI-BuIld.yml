@@ -34,7 +34,7 @@ jobs:
       - name: Run Test's 
         run: |
           SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )";
-          pushd "${SCRIPT_DIR}/.." > /dev/null;;
+          pushd "${SCRIPT_DIR}/.." > /dev/null;
           set -e;
           set -x;
           COVERAGE_THRESHOLD=95;
