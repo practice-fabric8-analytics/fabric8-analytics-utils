@@ -7,7 +7,6 @@ This library contains utilities and helper functions which can be used by other 
 ### Footnotes
 
 #### Check for all possible issues
-
 The script named `check-all.sh` is to be used to check the sources for all detectable errors and issues. This script can be run w/o any arguments:
 
 ```
