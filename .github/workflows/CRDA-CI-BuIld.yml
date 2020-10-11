@@ -43,9 +43,14 @@ jobs:
           ls;
           echo pwd;
           PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv tests/;
-          codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1;
+          codecov --token=b3420bb6-159c-49d3-8bd2-9cf2727069e8;
+      - name: Upload Code coverage
+        uses: codecov/codecov-action@v1 
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          file: coverage.xml # optional
       
           
           
           
-        
+    
