@@ -33,18 +33,15 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Setup tests 
         run: |
-          SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )";
-          pushd "${SCRIPT_DIR}/.." > /dev/null;
-          export TERM=xterm;
           pip install -U pip;
           pip install virtualenv;
           virtualenv --version;
           ls;
           virtualenv -p python3 venv && source venv/bin/activate;
           ls;
-          pip install -r fabric8-analytics-utils/tests/requirements.txt;
+          pip install -r tests/requirements.txt;
       - name: Run Tests
-        run: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python "$(which pytest)" --cov=fabric8-analytics-utils/f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv fabric8-analytics-utils/tests/
+        run: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv tests/
       - name: Run codecov
         run: codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1
           
