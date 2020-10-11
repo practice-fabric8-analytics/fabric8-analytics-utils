@@ -39,7 +39,9 @@ jobs:
           pip install -U pip;
           pip install virtualenv;
           virtualenv --version;
+          ls;
           virtualenv -p python3 venv && source venv/bin/activate;
+          ls;
           pip install -r tests/requirements.txt;
       - name: Run Tests
         run: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=95 -vv tests/
