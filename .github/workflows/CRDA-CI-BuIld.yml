@@ -38,7 +38,7 @@ jobs:
           set -e;
           set -x;
           COVERAGE_THRESHOLD=95;
-          export TERM=xterm;;
+          export TERM=xterm;
           RED=$(tput bold && tput setaf 1);
           GREEN=$(tput bold && tput setaf 2);
           YELLOW=$(tput bold && tput setaf 3);
@@ -49,10 +49,10 @@ jobs:
           virtualenv --version;
           virtualenv -p python3 venv && source venv/bin/activate;
           pip install -r tests/requirements.txt;
-          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/
-          codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1
-          printf "%stests passed%s\n\n" "${GREEN}" "${NORMAL}"
-          popd > /dev/null
+          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report term-missing --cov-fail-under=$COVERAGE_THRESHOLD -vv tests/;
+          codecov --token=1073459c-863a-4ff3-9847-8acbeaeb25e1;
+          printf "%stests passed%s\n\n" "${GREEN}" "${NORMAL}";
+          popd > /dev/null;
           
           
           
