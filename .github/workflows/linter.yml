@@ -6,21 +6,8 @@ on:
     branches: [ master ]
     
 jobs:
-  run-linter:
+  Linter:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.6
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.6'
-    - name: Run Linter
-      run: bash qa/run-linter.sh; 
-  
-  build:
-
-    runs-on: ubuntu-latest
-  
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
@@ -29,13 +16,53 @@ jobs:
         python-version: '3.6'
     - name: Run Linter
       run: bash qa/run-linter.sh;
-    - name: Run PyDocStyle
+  docstyle:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
+    - name: Run Docstyle
       run: bash qa/check-docstyle.sh
-    - name: Run Detect common errors
-      run: bash qa/detect-common-errors.sh
+  detect-common-errors:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
+    - name:  Run Detect common errors
+      run: bash qa/detect-dead-code.sh
+  detect-dead-code:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
     - name: Run Detect dead code 
-      run:  bash qa/detect-dead-code.sh
+      run: bash qa/detect-dead-code.sh
+  Cyclomatic-complexity:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
     - name: Run Cyclomatic Complexity Check
       run: bash qa/measure-cyclomatic-complexity.sh --fail-on-error
-    - name: Run Maintainablity index Check
-      run: bash qa/measure-maintainability-index.sh --fail-on-error
+  Maintainablity-index:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
+    - name: Run Maintainablity index check
+      run:  bash qa/measure-maintainability-index.sh --fail-on-error
