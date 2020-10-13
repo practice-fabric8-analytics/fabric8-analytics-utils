@@ -1,8 +1,8 @@
 name: CRDA Python Linter and Docstyle (matrix based)
 
 on:
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
+  
     
 jobs:
   build:
