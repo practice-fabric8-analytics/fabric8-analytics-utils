@@ -61,4 +61,4 @@ jobs:
       with:
           file: coverage.xml # optional
     - name: Run Matrix
-      run: echo ${{matrix}}
+      run: echo ${{matrix.project}}
