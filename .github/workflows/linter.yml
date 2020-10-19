@@ -46,8 +46,6 @@ jobs:
   Run-Tests:
     needs: setmatrix
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.job1.outputs.matrix)}}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
@@ -61,4 +59,4 @@ jobs:
       with:
           file: coverage.xml # optional
     - name: Run Matrix
-      run: echo ${{matrix}}
+      run: echo ${{fromJson(needs.job1.outputs.matrix)}}
