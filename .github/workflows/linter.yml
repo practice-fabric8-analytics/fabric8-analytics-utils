@@ -15,7 +15,7 @@ jobs:
       id: package
       uses: juliangruber/read-file-action@v1
       with:
-        path: scripts.json
+        path: ./scripts.json
     - id: set-matrix
       run: echo "::set-output name=matrix::"${{ steps.package.outputs.content }}
       #run: echo "::set-output name=matrix::{\"include\":[{\"name\":\"measure-cyclomatic-complexity\",\"run\":\"qa/measure-cyclomatic-complexity.sh --fail-on-error\"},{\"name\":\"measure-maintainability-index\",\"run\":\"qa/measure-maintainability-index.sh --fail-on-error\"}]}"
