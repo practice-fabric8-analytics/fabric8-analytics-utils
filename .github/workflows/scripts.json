@@ -1,0 +1,2 @@
+{"include":[{"name":"measure-cyclomatic-complexity","run":"qa/measure-cyclomatic-complexity.sh --fail-on-error"},
+{"name":"measure-maintainability-index","run":"qa/measure-maintainability-index.sh --fail-on-error"}]}
