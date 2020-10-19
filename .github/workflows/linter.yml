@@ -45,6 +45,8 @@ jobs:
       run: bash qa/${{ matrix.scripts }}.sh --fail-on-error
   Run-Tests:
     needs: setmatrix
+    strategy:
+        matrix: ${{fromJson(needs.setmatrix.outputs.matrix)}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -59,4 +61,4 @@ jobs:
       with:
           file: coverage.xml # optional
     - name: Run Matrix
-      run: echo ${{fromJson(needs.setmatrix.outputs.matrix)}}
+      run: echo ${{matrix}}
