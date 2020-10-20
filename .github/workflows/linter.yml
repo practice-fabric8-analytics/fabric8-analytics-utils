@@ -54,7 +54,14 @@ jobs:
         python-version: '3.6'
     - name: Run Unit Tests
       run:  bash qa/actions-run-tests.sh
-    - name: Upload Code coverage
-      uses: codecov/codecov-action@v1 
+    - name: Generate coverage report
+      run: |
+        pip install pytest
+        pip install pytest-cov
+        pytest --cov=./ --cov-report=xml
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
       with:
-          file: coverage.xml # optiona
+        token: b3420bb6-159c-49d3-8bd2-9cf2727069e8 
+        file: ./coverage.xml
+   
