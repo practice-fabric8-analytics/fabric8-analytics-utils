@@ -24,9 +24,9 @@ function prepare_venv() {
 radon cc -s -a -i venv .
 
 popd
-defects="$(radon mi -s -n B -i venv . | wc -l)"
+defects="$(radon cc -s -n D -i venv . | wc -l)"
 if [[ $defects -gt 0 ]]; then
-    echo "File(s) with too low maintainability index detected!"
+    echo "File(s) with too high cyclomatic complexity detected!"
     exit 1
 else
     echo "Finished Successfully..!"
