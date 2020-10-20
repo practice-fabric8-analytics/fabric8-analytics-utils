@@ -14,7 +14,7 @@ jobs:
   #  - id: set-matrix
       #run: echo "::set-output name=matrix::"${{ steps.package.outputs.content }}
   #    run: echo "::set-output name=matrix::{\"include\":[{\"name\":\"measure-cyclomatic-complexity\",\"run\":\"qa/measure-cyclomatic-complexity.sh --fail-on-error\"},{\"name\":\"measure-maintainability-index\",\"run\":\"qa/measure-maintainability-index.sh --fail-on-error\"}]}"
-  Linter-docstyle:
+  Code-Quality-Checks:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
@@ -46,7 +46,7 @@ jobs:
   #      python-version: '3.6'
   #  - name: Run  ${{ matrix.name }}
   #    run: bash  ${{ matrix.run }}
-  Run-Tests:
+  Unit-Tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
