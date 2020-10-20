@@ -24,7 +24,7 @@ pip install virtualenv
 virtualenv --version
 virtualenv -p python3 venv && source venv/bin/activate
 pip install -r tests/requirements.txt
-PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report=xml term-missing --cov-fail-under=95 -vv tests/    
+PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report=xml --cov-fail-under=95 -vv tests/    
 printf "%stests passed%s\n\n" "${GREEN}" "${NORMAL}"
 
 
