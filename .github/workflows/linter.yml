@@ -57,10 +57,8 @@ jobs:
     - name: Run Unit Tests
       run: |
         pip install -U pip
-        pip install virtualenv
-        virtualenv -p python3 venv && source venv/bin/activate
         pip install -r tests/requirements.txt
-        PYTHONPATH=`pwd` python3 "$(which pytest)" --cov=f8a_utils/ --cov-report=xml --cov-fail-under=95 -vv tests/
+        pytest --cov=f8a_utils/ --cov-report=xml --cov-fail-under=95 -vv tests/
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
