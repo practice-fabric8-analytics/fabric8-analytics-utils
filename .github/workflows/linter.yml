@@ -58,8 +58,7 @@ jobs:
       run: |
         pip install -U pip
         pip install -r tests/requirements.txt
-        ls;
-        pytest --cov=f8a_utils/ --cov-report=xml --cov-fail-under=95 -vv tests/
+        pytest --cov=f8a_utils --cov-report=xml --cov-fail-under=95 -vv tests
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
